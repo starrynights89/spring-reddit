@@ -1,4 +1,4 @@
-package com.springreddit.beans;
+package com.beans;
 
 import java.io.Serializable;
 
@@ -30,7 +30,6 @@ public class comments implements Serializable {
 	@OneToMany
 	@JoinColumn(name="id")
 	private users cUser;
-
 	
 	
 	public comments(int id, String content, int cDoots, users cUser) {

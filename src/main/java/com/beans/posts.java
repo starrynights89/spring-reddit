@@ -1,4 +1,4 @@
-package com.springreddit.beans;
+package com.beans;
 
 import java.io.Serializable;
 
