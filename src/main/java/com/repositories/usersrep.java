@@ -1,10 +1,12 @@
-package com.springreddit.repositories;
+package com.repositories;
 
 	import java.util.List;
-	import org.springframework.data.jpa.repository.JpaRepository;
-	import org.springframework.data.jpa.repository.Query;
-	import org.springframework.stereotype.Repository;
-	import com.springreddit.beans.users;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.beans.users;
 
 	@Repository
 	public interface usersrep extends JpaRepository<users, Integer>{

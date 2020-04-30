@@ -1,4 +1,4 @@
-package com.springreddit.controllers;
+package com.controllers;
 
 public class PostController {
 	

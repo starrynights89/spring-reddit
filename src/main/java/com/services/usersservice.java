@@ -1,7 +1,7 @@
-package com.springreddit.services;
+package com.services;
 import java.util.List;
 
-import com.springreddit.beans.users;
+import com.beans.users;
 
 public interface usersservice {
 	public List<users> getUserByUsername(String username);

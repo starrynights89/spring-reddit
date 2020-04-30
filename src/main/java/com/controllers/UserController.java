@@ -1,4 +1,4 @@
-package com.springreddit.controllers;
+package com.controllers;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -21,14 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.google.maps.errors.ApiException;
-import com.revature.beans.User;
-import com.revature.services.DistanceService;
-import com.revature.services.UserService;
-import com.revature.services.ValidationService;
-
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -113,7 +105,6 @@ public class UserController {
 	
 	@PutMapping("/{id}")
 	public ResponseEntity updateUser(@Valid @RequestBody User user, BindingResult result) {
-            Map<String, List<String>> errors = validationService.validate(result);
             if (errors.isEmpty()){
                 return ResponseEntity.ok(us.updateUser(user));
             } 
