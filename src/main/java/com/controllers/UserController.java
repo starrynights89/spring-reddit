@@ -21,6 +21,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.beans.users;
+import com.services.usersservice;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
@@ -37,6 +40,7 @@ import org.springframework.http.ResponseEntity;
 public class UserController {
     
     @Autowired
+    private usersservice us;
     //private, name, putyourservices here
 	
 	/**
@@ -48,21 +52,10 @@ public class UserController {
 	 * @return A list of all the users, users by is-driver, user by username and users by is-driver and location.
 	 */
 	
-	@GetMapping
-	public List<User> getUsers(@RequestParam(name="is-driver",required=false)Boolean isDriver,
-							   @RequestParam(name="username",required=false)String username,
-							   @RequestParam(name="location", required=false)String location) {
-		
-		if (isDriver != null && location != null) {
-			return us.getUserByRoleAndLocation(isDriver.booleanValue(), location);
-		} else if (isDriver != null) {
-			return us.getUserByRole(isDriver.booleanValue());
-		} else if (username != null) {
-			return us.getUserByUsername(username);
-		}
-		
+/*	@GetMapping
+	public List<users> getUsers(){
 		return us.getUsers();
-	}
+	}*/
 	
 	/**
 	 * HTTP GET (users/{id})
@@ -70,59 +63,38 @@ public class UserController {
 	 * @param id represents the user's id.
 	 * @return A user that matches the id.
 	 */
-	
+	@GetMapping
+	public List<users> getAllUsers() {
+		return us.getAllUsers();
+	}
+    
 	@GetMapping("/{id}")
-	public User getUserById(@PathVariable("id")int id) {
+	public users getUserById(@PathVariable("id")int id) {
 		
-		return us.getUserById(id);
+		return us.getUserById(id).get(0);
 	}
 	
-	/**
-	 * HTTP POST method (/users)
-	 * 
-	 * @param user represents the new User object being sent.
-	 * @return The newly created object with a 201 code.
-	 * 
-	 * Sends custom error messages when incorrect input is used
-	 */
+	@GetMapping("/{username}")
+	public users getUserByUsername(@PathVariable("username")String username) {
+		
+		return us.getUserByUsername(username).get(0);
+	}
 	
 	@PostMapping
-	public ResponseEntity addUser(@Valid @RequestBody User user, BindingResult result) {
-            if (errors.isEmpty()){
-                    return ResponseEntity.status(HttpStatus.CREATED).body(
-                            us.addUser(user));
-            } 
-            else return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+	public ResponseEntity addUser(@Valid @RequestBody users user, BindingResult result) {
+			return ResponseEntity.status(HttpStatus.CREATED).body(
+			us.addUser(user));
 		
 	}
 	
-	/**
-	 * HTTP PUT method (/users)
-	 * 
-	 * @param user represents the updated User object being sent.
-	 * @return The newly updated object.
-	 */
-	
 	@PutMapping("/{id}")
-	public ResponseEntity updateUser(@Valid @RequestBody User user, BindingResult result) {
-            if (errors.isEmpty()){
+	public ResponseEntity updateUser(@RequestBody users user, BindingResult result) {
                 return ResponseEntity.ok(us.updateUser(user));
-            } 
-            else {
-                return ResponseEntity.badRequest().body(errors);
-            }
 	}
 	
-	/**
-	 * HTTP DELETE method (/users)
-	 * 
-	 * @param id represents the user's id.
-	 * @return A string that says which user was deleted.
-	 */
 	
 	@DeleteMapping("/{id}")
 	public String deleteUserById(@PathVariable("id")int id) {
-		
 		return us.deleteUserById(id);
 	}
 	
