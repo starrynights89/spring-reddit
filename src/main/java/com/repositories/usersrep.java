@@ -11,13 +11,6 @@ import com.beans.users;
 	@Repository
 	public interface usersrep extends JpaRepository<users, Integer>{
 		
-		/**
-		 * Custom query that uses the @Query annotation to select a user by username.
-		 * 
-		 * @param username represents the user's username.
-		 * @return Check {@link com.userserviceimpl.services.impl.UserServiceImpl}
-		 */
-		
 		@Query("select u from users u")
 		public List<users> getAllUsers();
 		
