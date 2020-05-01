@@ -18,9 +18,12 @@ import com.beans.users;
 		 * @return Check {@link com.userserviceimpl.services.impl.UserServiceImpl}
 		 */
 		
+		@Query("select u from users u")
+		public List<users> getAllUsers();
+		
 		@Query("select u from users u where u.username = ?1")
 		public List<users> getUserByUsername(String username);
 		
-
-
+		@Query("select u from users u where u.id = ?1")
+		public List<users> getUserById(int id);
 }
