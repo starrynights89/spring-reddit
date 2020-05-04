@@ -16,8 +16,18 @@ public class userserviceimpl implements usersservice {
 	private usersrep ur;
 	
 	@Override
+	public List<users> getAllUsers()	{
+		return ur.getAllUsers();
+	}
+	
+	@Override
 	public List<users> getUserByUsername(String username) {
 		return ur.getUserByUsername(username);
+	}
+	
+	@Override
+	public List<users> getUserById(int id) {
+		return ur.getUserById(id);
 	}
 	
 	@Override
