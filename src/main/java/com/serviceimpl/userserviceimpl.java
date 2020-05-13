@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.beans.users;
 import com.repositories.usersrep;
-import com.services.usersservice;
+import com.services.userservice;
 
 @Service
-public class userserviceimpl implements usersservice {
+public class userserviceimpl implements userservice {
 	
 	@Autowired
 	private usersrep ur;

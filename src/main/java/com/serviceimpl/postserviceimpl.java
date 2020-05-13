@@ -10,7 +10,7 @@ import com.beans.users;
 import com.repositories.postrep;
 import com.repositories.usersrep;
 import com.services.postservice;
-import com.services.usersservice;
+import com.services.userservice;
 
 @Service
 public class postserviceimpl implements postservice {

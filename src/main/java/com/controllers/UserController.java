@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.beans.users;
-import com.services.usersservice;
+import com.services.userservice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +30,7 @@ import org.springframework.http.ResponseEntity;
 public class UserController {
     
     @Autowired
-    private usersservice us;
+    private userservice us;
 	
     
     
