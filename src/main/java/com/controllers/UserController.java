@@ -27,6 +27,12 @@ import org.springframework.http.ResponseEntity;
 @CrossOrigin
 @SessionAttributes(value= "user")
 
+//get: get user
+//post, make user
+//update user
+//delete user
+
+
 public class UserController {
     
     @Autowired
