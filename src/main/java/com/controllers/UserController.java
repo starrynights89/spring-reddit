@@ -32,7 +32,8 @@ public class UserController {
     @Autowired
     private usersservice us;
 	
-
+    
+    
 	@GetMapping
 	public List<users> getAllUsers() {
 		return us.getAllUsers();
@@ -40,13 +41,11 @@ public class UserController {
     
 	@GetMapping("/{id}")
 	public users getUserById(@PathVariable("id")int id) {
-		
 		return us.getUserById(id).get(0);
 	}
 	
 	@GetMapping("/{username}")
 	public users getUserByUsername(@PathVariable("username")String username) {
-		
 		return us.getUserByUsername(username).get(0);
 	}
 	
@@ -54,14 +53,12 @@ public class UserController {
 	public ResponseEntity addUser(@Valid @RequestBody users user, BindingResult result) {
 			return ResponseEntity.status(HttpStatus.CREATED).body(
 			us.addUser(user));
-		
 	}
 	
 	@PutMapping("/{id}")
 	public ResponseEntity updateUser(@RequestBody users user, BindingResult result) {
                 return ResponseEntity.ok(us.updateUser(user));
 	}
-	
 	
 	@DeleteMapping("/{id}")
 	public String deleteUserById(@PathVariable("id")int id) {

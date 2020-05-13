@@ -30,6 +30,8 @@ public class users implements Serializable {
 	@Column(name="dootTotal")
 	private String dootTotal;
 	
+	
+	
 	public users(int id, String username, String password, String dootTotal) {
 		super();
 		this.id = id;
@@ -37,6 +39,8 @@ public class users implements Serializable {
 		this.password = password;
 		this.dootTotal = dootTotal;
 	}	
+	
+	
 	
 	public int getId() {
 		return id;
